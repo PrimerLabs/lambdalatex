@@ -49,7 +49,7 @@ for i in lambdaFunctions["Functions"]:
 if "tuftelatex" in functionsList:
     print "Updating function tuftelatex "
     updateResponse = client.update_function_code(
-        FunctionName = "tuftelatex",
+        FunctionName = "tuftelatexlambda",
         S3Bucket = "tuftelatex",
         S3Key= "latexlambda.zip"
     )
@@ -59,7 +59,7 @@ if "tuftelatex" in functionsList:
 else:
     print "Creating a New function as the tuftelatex function doesn't exist "
     createResponse = client.create_function(
-        FunctionName="tuftelatex",
+        FunctionName="tuftelatexlambda",
         Runtime="python3.6",
         Role=role['Role']['Arn'],
         Handler="lambda_function.lambda_handler",
