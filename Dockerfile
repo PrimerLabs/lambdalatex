@@ -66,7 +66,6 @@ RUN tlmgr install xcolor \
     geometry \
     hyperref \
     natbib \
-    optparams \
     paralist \
     placeins \
     setspace \
@@ -75,7 +74,6 @@ RUN tlmgr install xcolor \
      titlesec \
      xcolor \
      xifthen \
-     ifpdf \
      ifxetex \
      mathpazo \
      soul

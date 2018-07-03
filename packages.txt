@@ -7,3 +7,5 @@ bibentry
 fontenc
 letterspace
 ragged2e
+ifpdf
+optparams
