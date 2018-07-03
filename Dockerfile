@@ -61,32 +61,26 @@ RUN tlmgr install xcolor \
                   l3packages \
                   helvetic \
                   charter \
-		  chngpage \
 		changepage \
     fancyhdr \
-    fontenc \
     geometry \
     hyperref \
     natbib \
-    bibentry \
     optparams \
     paralist \
     placeins \
-    ragged2e \
     setspace \
     textcase \
 	   textcase \
      titlesec \
-     titletoc \
      xcolor \
      xifthen \
-     beramono \
-     helvet \
      ifpdf \
      ifxetex \
-     letterspace \
      mathpazo \
      soul
+
+
 
 # Install latexmk.
 RUN tlmgr install latexmk
