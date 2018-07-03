@@ -4,7 +4,7 @@ using JSON
 using AWSCore
 using AWSS3
 # using AWSLambda: create_lambda, update_lambda, lambda_configuration,
-                 invoke_lambda
+#                 invoke_lambda
 using InfoZIP
 
 function all()
