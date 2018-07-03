@@ -19,12 +19,14 @@ end
 function download()
     run(`wget
          http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz`)
+    print("Download completed")
 end
 
 
 # Build docker image from Dockerfile.
 function build()
-    run(`docker build -t octech/lambdalatex .`)
+    run(`sudo docker build -t octech/lambdalatex .`)
+    print("Build completed")
 end
 
 
