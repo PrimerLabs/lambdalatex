@@ -42,7 +42,7 @@ function deploy()
     AWSCore.set_debug_level(2)
     aws = AWSCore.default_aws_config()
     n = AWSCore.aws_account_number(aws)
-    aws[:lambda_bucket] = "octech.latexlambda.deploy.$n"
+    aws[:lambda_bucket] = "tuftelatex"
     s3_create_bucket(aws[:lambda_bucket])
     s3_put(aws[:lambda_bucket], "latexlambda.zip", read("latexlambda.zip"))
 end

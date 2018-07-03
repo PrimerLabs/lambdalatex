@@ -9,3 +9,9 @@ letterspace
 ragged2e
 ifpdf
 optparams
+
+docker stop $(ps docker -q -a)
+
+docker rm -vf $(docker ps -aq)
+
+docker system prune --all

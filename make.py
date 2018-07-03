@@ -50,7 +50,7 @@ if "tuftelatex" in functionsList:
     print "Updating function tuftelatex "
     updateResponse = client.update_function_code(
         FunctionName = "tuftelatex",
-        S3Bucket = "octech.latexlambda.deploy.462489886781",
+        S3Bucket = "tuftelatex",
         S3Key= "latexlambda.zip"
     )
     if updateResponse["ResponseMetadata"]["HTTPStatusCode"] == 200:
@@ -64,7 +64,7 @@ else:
         Role=role['Role']['Arn'],
         Handler="lambda_function.lambda_handler",
         Code={
-            "S3Bucket" : "octech.latexlambda.deploy.462489886781",
+            "S3Bucket" : "tuftelatex",
             "S3Key" : "latexlambda.zip"
         },
         Timeout=300,
