@@ -46,7 +46,7 @@ for i in lambdaFunctions["Functions"]:
 # Check if the function already exists in the lambda list
 # Create or Update the function accordingly
 
-if "tuftelatex" in functionsList:
+if "tuftelatexlambda" in functionsList:
     print "Updating function tuftelatex "
     updateResponse = client.update_function_code(
         FunctionName = "tuftelatexlambda",
