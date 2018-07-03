@@ -98,7 +98,7 @@ json_data = json.dumps(data)
 # Invoke the Lambda Function
 client = boto3.client('lambda')
 print "Connected to client"
-response = client.invoke(FunctionName='latex', Payload=json_data)
+response = client.invoke(FunctionName='tuftelatexlambda', Payload=json_data)
 output = ast.literal_eval(response["Payload"].read())["output"]
 with open("test_output_lambda.pdf", "w") as res:
 	res.write(base64.b64decode(output))
