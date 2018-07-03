@@ -12,7 +12,6 @@ function all()
     build()
     zip()
     deploy()
-    test()
 end
 
 
@@ -36,7 +35,7 @@ function zip()
 end
 
 
-# Deploy .ZIP file to Lambda.
+# Deploy .ZIP file to S3 bucket
 function deploy()
     AWSCore.set_debug_level(2)
     aws = AWSCore.default_aws_config()
@@ -44,13 +43,6 @@ function deploy()
     aws[:lambda_bucket] = "octech.latexlambda.deploy.$n"
     s3_create_bucket(aws[:lambda_bucket])
     s3_put(aws[:lambda_bucket], "latexlambda.zip", read("latexlambda.zip"))
-    if lambda_configuration("latex") == nothing
-        create_lambda(aws, "latex"; Runtime="python3.6",
-                                    S3Key="latexlambda.zip",
-                                    MemorySize=1536)
-    else
-        update_lambda(aws, "latex"; S3Key="latexlambda.zip")
-    end
 end
 
 
@@ -81,13 +73,6 @@ function localtest()
     write("test_output_local.stdout", out["stdout"])
 end
 
-
-# Test latex on Lambda.
-function test()
-    @time out = invoke_lambda("latex"; input=test_zip)
-    write("test_output_lambda.pdf", base64decode(out[:output]))
-    write("test_output_lambda.stdout", out[:stdout])
-end
 
 
 # Remove intermediate files.
