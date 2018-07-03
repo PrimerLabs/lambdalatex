@@ -74,31 +74,31 @@ else:
     if createResponse["ResponseMetadata"]["HTTPStatusCode"] == 200:
         print "Successfully updated the function"
 #
-# # Create Duplicate
-# if path.exists("sample.tex"):
-# # get the path to the file in the current directory
-#     src = path.realpath("sample.tex");# rename the original file
-#     os.rename("sample.tex", "document.tex")
-#
-# # Convert the Tex Input to Zip
-# with ZipFile('texZip.zip', 'w') as myzip:
-# 	myzip.write('document.tex')
-#
-#
-# # Encode the Zip File
-# with open('texZip.zip', 'rb') as f:
-#     bytes = f.read()
-#     encoded = base64.b64encode(bytes)
-#
-#
-# # Generate the payload
-# data = { "input" : encoded }
-# json_data = json.dumps(data)
-#
-# # Invoke the Lambda Function
-# client = boto3.client('lambda')
-# print "Connected to client"
-# response = client.invoke(FunctionName='latex', Payload=json_data)
-# output = ast.literal_eval(response["Payload"].read())["output"]
-# with open("test_output_lambda.pdf", "w") as res:
-# 	res.write(base64.b64decode(output))
+# Create Duplicate
+if path.exists("sample.tex"):
+# get the path to the file in the current directory
+    src = path.realpath("sample.tex");# rename the original file
+    os.rename("sample.tex", "document.tex")
+
+# Convert the Tex Input to Zip
+with ZipFile('texZip.zip', 'w') as myzip:
+	myzip.write('document.tex')
+
+
+# Encode the Zip File
+with open('texZip.zip', 'rb') as f:
+    bytes = f.read()
+    encoded = base64.b64encode(bytes)
+
+
+# Generate the payload
+data = { "input" : encoded }
+json_data = json.dumps(data)
+
+# Invoke the Lambda Function
+client = boto3.client('lambda')
+print "Connected to client"
+response = client.invoke(FunctionName='latex', Payload=json_data)
+output = ast.literal_eval(response["Payload"].read())["output"]
+with open("test_output_lambda.pdf", "w") as res:
+	res.write(base64.b64decode(output))
