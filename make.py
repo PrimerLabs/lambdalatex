@@ -23,10 +23,17 @@ role_policy_document = {
 
 iam_client = boto3.client('iam')
 env_variables = dict() # Environment Variables
-# iam_client.create_role(
-#   RoleName='TufteLambdaExecution',
-#   AssumeRolePolicyDocument=json.dumps(role_policy_document),
-# )
+
+roles_list = []
+RoleList = iam_client.list_roles()
+for i in RoleList["Roles"]:
+    roles_list.append(i["RoleName"])
+
+if "TufteLambdaExecution" not in roles_list:
+    iam_client.create_role(
+        RoleName='TufteLambdaExecution',
+        AssumeRolePolicyDocument=json.dumps(role_policy_document),
+    )
 
 role = iam_client.get_role(RoleName='TufteLambdaExecution')
 client = boto3.client('lambda')
@@ -46,7 +53,9 @@ if "tuftelatex" in functionsList:
         S3Bucket = "octech.latexlambda.deploy.462489886781",
         S3Key= "latexlambda.zip"
     )
-    print updateResponse
+    if updateResponse["ResponseMetadata"]["HTTPStatusCode"] == 200:
+        print "Successfully updated the function"
+
 else:
     print "Creating a New function as the tuftelatex function doesn't exist "
     createResponse = client.create_function(
@@ -62,7 +71,8 @@ else:
         Environment=dict(Variables=env_variables),
         MemorySize=1792
     )
-    print createResponse
+    if createResponse["ResponseMetadata"]["HTTPStatusCode"] == 200:
+        print "Successfully updated the function"
 #
 # # Create Duplicate
 # if path.exists("sample.tex"):
