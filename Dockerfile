@@ -62,7 +62,23 @@ RUN tlmgr install xcolor \
                   l3packages \
                   helvetic \
                   charter \
-                  tufte-latex
+                  changepage \
+                  fancyhdr \
+                  geometry \
+                  hyperref \
+                  natbib \
+                  paralist \
+                  placeins \
+                  setspace \
+                  textcase \
+              	   textcase \
+                   titlesec \
+                   xcolor \
+                   xifthen \
+                   ifxetex \
+                   mathpazo \
+                   soul \
+                   tufte-latex
 
 # Install latexmk.
 RUN tlmgr install latexmk
