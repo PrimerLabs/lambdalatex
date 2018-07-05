@@ -90,8 +90,8 @@ RUN tlmgr remove --force luatex
 # Remove large unneeded files.
 RUN rm -rf /var/task/texlive/2017/tlpkg/texlive.tlpdb* \
            /var/task/texlive/2017/texmf-dist/source/latex/koma-script/doc \
-           /var/task/texlive/2017/texmf-dist/doc \
-           
+           /var/task/texlive/2017/texmf-dist/doc 
+
 
 
 RUN mkdir -p /var/task/texlive/2017/tlpkg/TeXLive/Digest/ && \

@@ -23,7 +23,6 @@ collection-langeuropean 0
 collection-langfrench 0
 collection-langgerman 0
 collection-langgreek 0
-collection-langindic 0
 collection-langitalian 0
 collection-langjapanese 0
 collection-langkorean 0
