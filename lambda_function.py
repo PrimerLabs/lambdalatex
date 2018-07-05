@@ -14,7 +14,8 @@ def lambda_handler(event, context):
     # Get the Bucket where the event occured
     source_bucket = event['Records'][0]['s3']['bucket']['name']
     key = urllib.unquote_plus(event['Records'][0]['s3']['object']['key'])
-
+    filename, file_extension = os.path.splitext(key)
+    target_key = filename + '.pdf'
     print("Waiting for the file persist in the source_bucket")
     waiter = s3.get_waiter('object_exists')
     waiter.wait(Bucket=source_bucket, Key=key)
@@ -48,7 +49,11 @@ def lambda_handler(event, context):
 
     # Read "document.pdf"...
     with open("document.pdf", "rb") as f:
+        s3.upload_fileobj(f, source_bucket, target_key )
         pdf = f.read()
+
+    # Save the pdf in the Source bucket
+
 
     # Return base64 encoded pdf and stdout log from pdflaxex...
     return {
