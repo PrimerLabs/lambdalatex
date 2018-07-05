@@ -32,3 +32,13 @@ docker system prune --all
     texlive-latex-recommended
     texlive-latex-extra
     texlive-fonts-recommended
+
+    # Delete the following doc
+    texlive-fonts-recommended-doc
+    texlive-latex-recommended-doc
+    texlive-latex-extra-doc
+
+    # Add the following to the texlive
+    collection-fontsrecommended 1
+    collection-latexrecommended 1
+    collection-latexextra 1
