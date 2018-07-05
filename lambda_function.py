@@ -5,7 +5,7 @@ import subprocess
 import base64
 import zipfile
 import boto3
-from urllib.parse import unquote
+from urllib.parse import unquote_plus
 
 s3 = boto3.client('s3')
 lambda_client = boto3.client('lambda')
