@@ -39,7 +39,7 @@ docker system prune --all
     texlive-latex-extra-doc
 
     # Add the following to the texlive
-    collection-fontsrecommended 1
+    collection-fontsrecommended 1 #only this one makes it 124 mb and working
     collection-latexrecommended 1
     collection-latexextra 1
 
