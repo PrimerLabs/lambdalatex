@@ -13,7 +13,7 @@ lambda_client = boto3.client('lambda')
 def lambda_handler(event, context):
     # Get the Bucket where the event occured
     source_bucket = event['Records'][0]['s3']['bucket']['name']
-    key = urllib.unquote_plus(event['Records'][0]['s3']['object']['key'])
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'])
     filename, file_extension = os.path.splitext(key)
     target_key = filename + '.pdf'
     print("Waiting for the file persist in the source_bucket")
@@ -23,7 +23,7 @@ def lambda_handler(event, context):
     # Get the zip File
     responseObject = s3.get_object(Bucket=source_bucket, Key=key)
     encodedZipFile = responseObject["Body"].read()
-    
+
     z = zipfile.ZipFile(io.BytesIO(encodedZipFile))
 
     # Extract input     ZIP file to /tmp/latex...
