@@ -49,10 +49,10 @@ def lambda_handler(event, context):
     print(r.stdout.decode('utf_8'))
 
     # Read "document.pdf"...
-    with open("document.pdf", "rb") as f:
+    with open("sample-book.pdf", "rb") as f:
         s3.upload_fileobj(f, source_bucket, target_key )
 
-    with open("document.pdf", "rb") as f:
+    with open("sample-book.pdf", "rb") as f:
         pdf = f.read()
 
     # Save the pdf in the Source bucket
