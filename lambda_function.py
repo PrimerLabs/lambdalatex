@@ -4,13 +4,29 @@ import shutil
 import subprocess
 import base64
 import zipfile
+import boto3
+import urllib
+
+s3 = boto3.client('s3')
+lambda_client = boto3.client('lambda')
 
 def lambda_handler(event, context):
-    
-    # Extract input ZIP file to /tmp/latex...
+    # Get the Bucket where the event occured
+    source_bucket = event['Records'][0]['s3']['bucket']['name']
+    key = urllib.unquote_plus(event['Records'][0]['s3']['object']['key'])
+
+    print("Waiting for the file persist in the source_bucket")
+    waiter = s3.get_waiter('object_exists')
+    waiter.wait(Bucket=source_bucket, Key=key)
+
+    # Get the zip File
+    responseObject = s3.get_object(Bucket=source_bucket, Key=key)
+    encodedZipFile = responseObject["Body"].read()
+    z = zipfile.ZipFile(io.BytesIO(base64.b64decode(encodedZipFile)))
+
+    # Extract input     ZIP file to /tmp/latex...
     shutil.rmtree("/tmp/latex", ignore_errors=True)
     os.mkdir("/tmp/latex")
-    z = zipfile.ZipFile(io.BytesIO(base64.b64decode(event["input"])))
     z.extractall(path="/tmp/latex")
 
     os.environ['PATH'] += ":/var/task/texlive/2017/bin/x86_64-linux/"
