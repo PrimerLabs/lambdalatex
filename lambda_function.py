@@ -5,7 +5,7 @@ import subprocess
 import base64
 import zipfile
 import boto3
-import urllib
+from urllib.parse import unquote
 
 s3 = boto3.client('s3')
 lambda_client = boto3.client('lambda')
@@ -13,7 +13,7 @@ lambda_client = boto3.client('lambda')
 def lambda_handler(event, context):
     # Get the Bucket where the event occured
     source_bucket = event['Records'][0]['s3']['bucket']['name']
-    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'])
+    key = unquote_plus(event['Records'][0]['s3']['object']['key'])
     filename, file_extension = os.path.splitext(key)
     target_key = filename + '.pdf'
     print("Waiting for the file persist in the source_bucket")
