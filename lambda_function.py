@@ -23,7 +23,8 @@ def lambda_handler(event, context):
     # Get the zip File
     responseObject = s3.get_object(Bucket=source_bucket, Key=key)
     encodedZipFile = responseObject["Body"].read()
-    z = zipfile.ZipFile(io.BytesIO(base64.b64decode(encodedZipFile)))
+    
+    z = zipfile.ZipFile(io.BytesIO(encodedZipFile))
 
     # Extract input     ZIP file to /tmp/latex...
     shutil.rmtree("/tmp/latex", ignore_errors=True)
