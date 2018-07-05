@@ -1,4 +1,5 @@
 all: build
 
 %:
-	julia make.jl $@
+	sudo julia make.jl
+	python make.py
