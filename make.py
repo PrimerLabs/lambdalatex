@@ -35,7 +35,7 @@ if "TufteLambdaExecution" not in roles_list:
         AssumeRolePolicyDocument=json.dumps(role_policy_document),
     )
 
-role = iam_client.get_role(RoleName='TufteLambdaExecution')
+role = iam_client.get_role(RoleName='lambda_s3')
 client = boto3.client('lambda')
 
 functionsList = []
