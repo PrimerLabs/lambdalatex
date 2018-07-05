@@ -76,7 +76,8 @@ RUN tlmgr install xcolor \
      xifthen \
      ifxetex \
      mathpazo \
-     soul
+     soul \
+     tufte-latex
 
 
 

@@ -10,6 +10,18 @@ ragged2e
 ifpdf
 optparams
 
+Here's the list of Ubuntu package names that cover the required
+Tufte-LaTeX packages:
+ * latex-xcolor
+ * texlive-base
+ * texlive-fonts-extra
+ * texlive-fonts-recommended
+ * texlive-latex-base
+ * texlive-latex-extra
+ * texlive-latex-recommended
+ * texlive-pictures
+
+
 docker stop $(ps docker -q -a)
 
 docker rm -vf $(docker ps -aq)
