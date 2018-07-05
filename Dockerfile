@@ -92,7 +92,7 @@ RUN rm -rf /var/task/texlive/2017/tlpkg/texlive.tlpdb* \
            /var/task/texlive/2017/texmf-dist/source/latex/koma-script/doc \
            /var/task/texlive/2017/texmf-dist/doc
 
-RUN apt-get -y --purge remove tex.\*-doc$
+RUN yum -y remove tex.\*-doc$
 
 RUN mkdir -p /var/task/texlive/2017/tlpkg/TeXLive/Digest/ && \
     mkdir -p /var/task/texlive/2017/tlpkg/TeXLive/auto/Digest/MD5/ && \
