@@ -27,5 +27,3 @@ tlpdbopt_generate_updmap 0
 tlpdbopt_install_docfiles 0
 tlpdbopt_install_srcfiles 0
 tlpdbopt_post_code 1
-option_doc 0
-option_src 0

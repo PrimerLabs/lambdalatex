@@ -1,3 +1,4 @@
+
 FROM lambci/lambda:build-python3.6
 
 # The TeXLive installer needs md5 and wget.
@@ -60,26 +61,7 @@ RUN tlmgr install xcolor \
                   l3kernel \
                   l3packages \
                   helvetic \
-                  charter \
-		changepage \
-    fancyhdr \
-    geometry \
-    hyperref \
-    natbib \
-    paralist \
-    placeins \
-    setspace \
-    textcase \
-	   textcase \
-     titlesec \
-     xcolor \
-     xifthen \
-     ifxetex \
-     mathpazo \
-     soul \
-     tufte-latex
-
-
+                  charter
 
 # Install latexmk.
 RUN tlmgr install latexmk
@@ -90,9 +72,7 @@ RUN tlmgr remove --force luatex
 # Remove large unneeded files.
 RUN rm -rf /var/task/texlive/2017/tlpkg/texlive.tlpdb* \
            /var/task/texlive/2017/texmf-dist/source/latex/koma-script/doc \
-           /var/task/texlive/2017/texmf-dist/doc 
-
-
+           /var/task/texlive/2017/texmf-dist/doc
 
 RUN mkdir -p /var/task/texlive/2017/tlpkg/TeXLive/Digest/ && \
     mkdir -p /var/task/texlive/2017/tlpkg/TeXLive/auto/Digest/MD5/ && \

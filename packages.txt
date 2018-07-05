@@ -42,3 +42,21 @@ docker system prune --all
     collection-fontsrecommended 1
     collection-latexrecommended 1
     collection-latexextra 1
+
+    changepage \
+    fancyhdr \
+    geometry \
+    hyperref \
+    natbib \
+    paralist \
+    placeins \
+    setspace \
+    textcase \
+	   textcase \
+     titlesec \
+     xcolor \
+     xifthen \
+     ifxetex \
+     mathpazo \
+     soul \
+     tufte-latex
