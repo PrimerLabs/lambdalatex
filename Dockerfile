@@ -61,7 +61,8 @@ RUN tlmgr install xcolor \
                   l3kernel \
                   l3packages \
                   helvetic \
-                  charter
+                  charter \
+                  tufte-latex
 
 # Install latexmk.
 RUN tlmgr install latexmk
