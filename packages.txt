@@ -27,3 +27,8 @@ docker stop $(ps docker -q -a)
 docker rm -vf $(docker ps -aq)
 
 docker system prune --all
+
+
+    texlive-latex-recommended
+    texlive-latex-extra
+    texlive-fonts-recommended
