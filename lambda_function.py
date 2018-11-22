@@ -15,7 +15,7 @@ def lambda_handler(event, context):
     source_bucket = event['Records'][0]['s3']['bucket']['name']
     key = unquote_plus(event['Records'][0]['s3']['object']['key'])
     filename, file_extension = os.path.splitext(key)
-    target_key = filename + '.pdf'
+    target_key = 'Course Notebook' + '.pdf'
     log_target_key = filename + '.log'
     print("Waiting for the file persist in the source_bucket")
     waiter = s3.get_waiter('object_exists')
