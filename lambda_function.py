@@ -42,6 +42,7 @@ def lambda_handler(event, context):
                         "-verbose",
                         "-interaction=batchmode",
                         "-pdf",
+                        "-f",
                         "-output-directory=/tmp/latex",
                         "sample-book.tex"],
                        stdout=subprocess.PIPE,
