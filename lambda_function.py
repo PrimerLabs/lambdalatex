@@ -16,6 +16,7 @@ def lambda_handler(event, context):
     key = unquote_plus(event['Records'][0]['s3']['object']['key'])
     filename, file_extension = os.path.splitext(key)
     target_key = filename + '.pdf'
+    log_target_key = filename + '.log'
     print("Waiting for the file persist in the source_bucket")
     waiter = s3.get_waiter('object_exists')
     waiter.wait(Bucket=source_bucket, Key=key)
@@ -52,6 +53,10 @@ def lambda_handler(event, context):
     # Read "document.pdf"...
     with open("sample-book.pdf", "rb") as f:
         s3.upload_fileobj(f, source_bucket, target_key )
+    
+    # Read "document.log"...
+    with open("sample-book.log", "rb") as f:
+        s3.upload_fileobj(f, source_bucket, log_target_key )
 
     with open("sample-book.pdf", "rb") as f:
         pdf = f.read()
