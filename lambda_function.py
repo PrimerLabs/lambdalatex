@@ -58,7 +58,7 @@ def lambda_handler(event, context):
     
     # Read "document.log"...
     with open("sample-book.log", "rb") as f:
-        s3.upload_fileobj(f, source_bucket, log_target_key )
+        s3.upload_fileobj(f, source_bucket, log_target_key, ExtraArgs={'ACL': 'public-read'} )
 
     with open("sample-book.pdf", "rb") as f:
         pdf = f.read()
